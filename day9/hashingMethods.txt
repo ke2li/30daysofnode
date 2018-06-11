@@ -1,0 +1,9 @@
+Hashing methods:
+md5
+whirlpool
+sha1
+sha224
+sha256
+sha384
+sha512
+ripemd-160
