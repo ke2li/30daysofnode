@@ -14,9 +14,9 @@ app.get('/', (req,res) =>{
 }).listen(3000);
 
 console.log('server listening at 3000');
-app.use('/public', express.statis(_dirname + '/public'));
+app.use('/public', express.static(__dirname + '/public'));
 app.use(bodyParser.json());
-app.use(bodyParse.urlencoded({
+app.use(bodyParser.urlencoded({
 	extended: true
 }));
 
