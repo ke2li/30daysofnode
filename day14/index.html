@@ -1,0 +1,54 @@
+<html>
+<head>
+	<title>Real Time Quotes </title>
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Josefin+Slab" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+
+	<style>
+		.font{
+			font-family : 'Josefin Slab', serif;
+			text-align:center;
+			font-size: 40px;
+			font-weight:bold;
+		}
+		blockquote{
+			font-family: 'Josefin Slab', serif;
+			background: #ccccff;
+			font-size: 30px;
+			font-weight: normal;
+			border-left: 4px solid #4db8ff;
+		}
+	</style>mask: 
+</head>
+<body>
+	<div class="container">
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-8">
+			<div class="font"> Real Time Quotes </div>
+			<hr>
+			<div class="quotes" id="quotes">
+				<blockquote> have a great day, have a great life </blockquote>
+			</div>
+		</div>
+		<div class="col-md-2">
+		</div>
+	</div>
+	<script>
+		$('document').ready(function(){
+			var socket = io.connect('http://localhost:3000');
+			socket.on('new', (data)=>{
+				console.log(data);
+				socket.emit('my other event', {my: 'data'});
+			});
+
+			socket.on('next' , (data) =>{
+				console.log(data);
+				$('#quotes').append("<blockquote>" + data.data.quote + "</blockquote>")
+			})
+		})
+	</script>
+</body>
+</html>
