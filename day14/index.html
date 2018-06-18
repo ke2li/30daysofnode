@@ -20,7 +20,7 @@
 			font-weight: normal;
 			border-left: 4px solid #4db8ff;
 		}
-	</style>mask: 
+	</style>
 </head>
 <body>
 	<div class="container">
@@ -39,7 +39,7 @@
 	<script>
 		$('document').ready(function(){
 			var socket = io.connect('http://localhost:3000');
-			socket.on('new', (data)=>{
+			socket.on('news', (data)=>{
 				console.log(data);
 				socket.emit('my other event', {my: 'data'});
 			});
